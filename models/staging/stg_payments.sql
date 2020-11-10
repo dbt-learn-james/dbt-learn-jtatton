@@ -1,8 +1,8 @@
 select
     id as payment_id,
     orderid as order_id,
-    sum(amount)/100 as amount
+    amount as amount,
+    status as payment_status,
+    created as payment_created
 
 from raw.stripe.payment
-where status = 'success'
-GROUP BY 1, 2

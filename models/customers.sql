@@ -4,28 +4,9 @@ with customers as (
 
 ),
 
-payments_placed as (
-
-    select * from {{ ref('stg_payments')}}
-),
-
-orders_placed as (
-
-    select * from {{ ref('stg_orders') }}
-
-),
-
 orders as (
 
-    select
-        customer_id,
-        order_id,
-        order_date,
-        amount
-
-    from orders_placed
-
-    left join payments_placed using (order_id)
+    select * from {{ ref('orders')}}
 ),
 
 customer_orders as (
