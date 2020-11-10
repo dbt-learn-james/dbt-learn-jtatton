@@ -15,7 +15,7 @@ orders_placed as (
 
 ),
 
-orders as (
+final as (
 
     select
         customer_id,
@@ -28,4 +28,4 @@ orders as (
     left join payments_placed using (order_id)
 )
 
-select * from orders
+select * from final
