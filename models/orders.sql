@@ -1,12 +1,11 @@
 with payments_placed as (
 
     select 
-        payment_id, 
         order_id, 
         sum(amount)/100 as amount 
     from {{ ref('stg_payments')}}
     where payment_status = 'success'
-    group by 1, 2
+    group by 1
 ),
 
 orders_placed as (
