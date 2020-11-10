@@ -17,8 +17,8 @@ orders_placed as (
 final as (
 
     select
-        customer_id,
         order_id,
+        customer_id,
         order_date,
         amount
 
