@@ -19,7 +19,7 @@ sources:
         loaded_at_field: _etl_loaded_at
         freshness:
           warn_after: {count: 12, period: hour}
-          error_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
 
   - name: stripe
     database: raw
@@ -33,11 +33,11 @@ sources:
         loaded_at_field: _batched_at
         freshness:
           warn_after: {count: 12, period: hour}
-          error_after: {count: 12, period: hour}
+          error_after: {count: 24, period: hour}
 
 models:
   - name: customers
-    description: One record per customer
+    description: '{{ doc("table_customers") }}'
     columns:
       - name: customer_id
         description: Primary key
@@ -48,7 +48,7 @@ models:
         description: NULL when a customer has not yet placed an order.
 
   - name: orders
-    description: One record per order
+    description: '{{ doc("table_orders") }}'
     columns:
       - name: order_id
         description: Primary key
