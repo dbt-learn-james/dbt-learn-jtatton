@@ -1,5 +1,5 @@
 
-{% macro get_column_values_2(column_name, table_name) %}
+{% macro get_column_values_2(table_name, column_name) %}
 {% set payment_methods_query %}
 select distinct {{ column_name }} from {{ table_name }}
 order by 1
